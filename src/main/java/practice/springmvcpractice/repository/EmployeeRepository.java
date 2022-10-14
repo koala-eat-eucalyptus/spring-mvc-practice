@@ -13,7 +13,7 @@ public class EmployeeRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public void setDataSource(DataSource dataSource) {
+    public void setDataSource(DataSource dataSource)  {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
@@ -30,7 +30,7 @@ public class EmployeeRepository {
                         rs.getString("Address"),
                         rs.getString("Sex"),
                         rs.getString("Salary"),
-                        rs.getString("SuperSsn"),
+                        rs.getString("Super_ssn"),
                         rs.getString("Dno")
                         ), param);
     }
