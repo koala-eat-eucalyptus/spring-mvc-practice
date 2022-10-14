@@ -38,5 +38,28 @@
       </tbody>
     </table>
   </div>
+
+  <div>
+    <table style="border: 1px solid">
+      <thead>
+      <tr>
+        <th>eSsn</th>
+        <th>dependentName</th>
+        <th>sex</th>
+        <th>bDate</th>
+        <th>relationship</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="emp: ${list2}">
+        <td th:text="${emp.eSsn}">eSsn</td>
+        <td th:text="${emp.dependentName}">dependentName</td>
+        <td th:text="${emp.sex}">sex</td>
+        <td th:text="${emp.bDate}">bDate</td>
+        <td th:text="${emp.relationship}">relationship</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>
