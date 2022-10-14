@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import practice.springmvcpractice.domain.Employee;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 @Repository
 public class EmployeeRepository {
@@ -34,4 +35,23 @@ public class EmployeeRepository {
                         rs.getString("Dno")
                         ), param);
     }
+
+    public List<Employee> getAllEmployee() {
+        String query = "select * from Employee";
+        return this.jdbcTemplate.query(query,
+                (rs, rowNum) -> new Employee(
+                        rs.getString("Fname"),
+                        rs.getString("Minit"),
+                        rs.getString("Lname"),
+                        rs.getString("Ssn"),
+                        rs.getString("BDate"),
+                        rs.getString("Address"),
+                        rs.getString("Sex"),
+                        rs.getString("Salary"),
+                        rs.getString("Super_ssn"),
+                        rs.getString("Dno")
+                        )
+                );
+    }
+
 }
