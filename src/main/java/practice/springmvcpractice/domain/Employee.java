@@ -16,17 +16,18 @@ public class Employee {
     private String superSsn;
     private String dNo;
 
-    public Employee(String firstName, String lastName, String ssn, String dno) {
-        this.setFName(firstName);
-        this.setLName(lastName);
+    public Employee(String fName, String mInit, String lName, String ssn, String bDate,
+                    String address, String sex, String salary, String superSsn, String dNo) {
+        this.setFName(fName);
+        this.setMInit(mInit);
+        this.setLName(lName);
         this.setSsn(ssn);
-        this.setDNo(dno);
+        this.setBDate(bDate);
+        this.setAddress(address);
+        this.setSex(sex);
+        this.setSalary(salary);
+        this.setSuperSsn(superSsn);
+        this.setDNo(dNo);
     }
 
-    public Employee(String firstName, String lastName, String ssn) {
-        this.setFName(firstName);
-        this.setLName(lastName);
-        this.setSsn(ssn);
-        this.setDNo("1");
-    }
 }
