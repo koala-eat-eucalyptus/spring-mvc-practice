@@ -3,13 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>데이터베이스 - 직원정보시스템</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <style>
+    * {
+      text-align: center;
+    }
+    table {
+      border: 1px solid #000000;
+    }
+  </style>
 </head>
 <body>
-  <h1>직원검색시스템</h1>
+  <h1 style="text-align: left">직원검색시스템</h1>
   <div>
-    <table style="border: 1px solid">
+    <table class="table table-hover table-bordered">
       <thead>
-      <tr>
+      <tr style="text-align: center">
         <th>Fname</th>
         <th>Minit</th>
         <th>Lname</th>
@@ -38,9 +47,51 @@
       </tbody>
     </table>
   </div>
-
+  <br/>
+  <br/>
   <div>
-    <table style="border: 1px solid">
+    <form th:action="hire" method="post">
+      <table class="table table-hover table-bordered" style="width: 800px;">
+        <thead>
+        <tr>
+          <th style="width: 50px">Fname</th>
+          <th style="width: 50px">Minit</th>
+          <th style="width: 50px">Lname</th>
+          <th style="width: 100px">Ssn</th>
+          <th style="width: 50px">Bdate</th>
+          <th style="width: 200px">Address</th>
+          <th style="width: 50px">Sex</th>
+          <th style="width: 100px">Salary</th>
+          <th style="width: 100px">Super_ssn</th>
+          <th style="width: 50px">Dno</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><input id="Fname" style="width: 80px"/></td>
+          <td><input id="Minit" style="width: 50px"/></td>
+          <td><input id="Lname" style="width: 80px"/></td>
+          <td><input id="Ssn" style="width: 80px"/></td>
+          <td><input id="Bdate" style="width: 80px"/></td>
+          <td><input id="Address" style="width: 200px"/></td>
+          <td><input id="Sex" style="width: 50px"/></td>
+          <td><input id="Salary" style="width: 100px"/></td>
+          <td><input id="Super_Ssn" style="width: 80px"/></td>
+          <td><input id="Dno" style="width: 50px"/></td>
+        </tr>
+        </tbody>
+      </table>
+      <button type="submit" style="float: left" class="btn btn-warning">추가</button>
+    </form>
+  </div>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <div>
+    <table class="table table-hover table-bordered" style="width: 700px;">
       <thead>
       <tr>
         <th>eSsn</th>
