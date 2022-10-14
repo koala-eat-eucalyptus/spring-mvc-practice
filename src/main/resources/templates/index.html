@@ -6,10 +6,37 @@
 </head>
 <body>
   <h1>직원검색시스템</h1>
-  <ul>
-    <p>1. <a href="searchEmployee">직원 검색</a></p>
-    <p>2. <a href="addEmployee">직원 추가</a></p>
-    <p>3. <a href="deleteEmployee">직원 삭제</a></p>
-  </ul>
+  <div>
+    <table style="border: 1px solid">
+      <thead>
+      <tr>
+        <th>Fname</th>
+        <th>Minit</th>
+        <th>Lname</th>
+        <th>Ssn</th>
+        <th>Bdate</th>
+        <th>Address</th>
+        <th>Sex</th>
+        <th>Salary</th>
+        <th>Super_ssn</th>
+        <th>Dno</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="emp: ${list}">
+        <td th:text="${emp.fName}">Fname</td>
+        <td th:text="${emp.mInit}">Minit</td>
+        <td th:text="${emp.lName}">Lname</td>
+        <td th:text="${emp.ssn}">Ssn</td>
+        <td th:text="${emp.bDate}">Bdate</td>
+        <td th:text="${emp.address}">Address</td>
+        <td th:text="${emp.sex}">Sex</td>
+        <td th:text="${emp.salary}">Salary</td>
+        <td th:text="${emp.superSsn}">Super_ssn</td>
+        <td th:text="${emp.dNo}">Dno</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>
