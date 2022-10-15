@@ -5,29 +5,29 @@ import lombok.Setter;
 
 @Getter @Setter
 public class Employee {
-    private String fName;
-    private String mInit;
-    private String lName;
+    private String fname;
+    private String minit;
+    private String lname;
     private String ssn;
-    private String bDate;
+    private String bdate;
     private String address;
     private String sex;
     private String salary;
     private String superSsn;
-    private String dNo;
+    private String dno;
 
-    public Employee(String fName, String mInit, String lName, String ssn, String bDate,
-                    String address, String sex, String salary, String superSsn, String dNo) {
-        this.setFName(fName);
-        this.setMInit(mInit);
-        this.setLName(lName);
-        this.setSsn(ssn);
-        this.setBDate(bDate);
-        this.setAddress(address);
-        this.setSex(sex);
-        this.setSalary(salary);
-        this.setSuperSsn(superSsn);
-        this.setDNo(dNo);
+    public Employee(String fname, String minit, String lname, String ssn, String bdate,
+                    String address, String sex, String salary, String superSsn, String dno) {
+        this.fname = fname;
+        this.minit = minit;
+        this.lname = lname;
+        this.ssn = ssn;
+        this.bdate = bdate;
+        this.address = address;
+        this.sex = sex;
+        this.salary = salary;
+        this.superSsn = superSsn;
+        this.dno = dno;
     }
 
 }

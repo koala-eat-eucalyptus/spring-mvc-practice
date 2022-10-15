@@ -5,8 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import practice.springmvcpractice.repository.DependentRepository;
 import practice.springmvcpractice.repository.EmployeeRepository;
+
+import java.util.Map;
 
 @Controller
 public class HomeController {
@@ -23,17 +26,20 @@ public class HomeController {
 
     @RequestMapping("/")
     public String home(Model model) {
-        model.addAttribute("list", employeeRepository.getAllEmployee());
-        model.addAttribute("list2", dependentRepository.getDependent("333445555", "Joy"));
+        model.addAttribute("employeeList", employeeRepository.getAllEmployee());
+        model.addAttribute("dependentList", dependentRepository.getDependent("333445555", "Joy"));
 
         return "index";
     }
 
-    @RequestMapping("/hire")
-    public String hire(Model model) {
-        employeeRepository.hireEmployee("Pom", "E", "Pom", "135791357",
-                "2016-01-01", "dorm", "M", "12345",  "333445555", "5");
-        model.addAttribute("list", employeeRepository.getAllEmployee());
-        return "index";
+    @PostMapping("/hire")
+    public String hire(@RequestParam Map<String, Object> employeeMap) {
+        for(String key: employeeMap.keySet()) {
+            System.out.println(key);
+        }
+//        System.out.println(employeeMap.get("fname"));
+//        employeeRepository.hireEmployee("Pom", "E", "Pom", "135791357",
+//                "2016-01-01", "dorm", "M", "12345",  "333445555", "5");
+        return "redirect:/";
     }
 }
