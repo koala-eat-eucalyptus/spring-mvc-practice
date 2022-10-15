@@ -29,5 +29,11 @@ public class HomeController {
         return "index";
     }
 
-
+    @RequestMapping("/hire")
+    public String hire(Model model) {
+        employeeRepository.hireEmployee("Pom", "E", "Pom", "135791357",
+                "2016-01-01", "dorm", "M", "12345",  "333445555", "5");
+        model.addAttribute("list", employeeRepository.getAllEmployee());
+        return "index";
+    }
 }
