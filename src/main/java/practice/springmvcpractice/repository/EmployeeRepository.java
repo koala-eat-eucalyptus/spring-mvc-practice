@@ -54,4 +54,22 @@ public class EmployeeRepository {
                 );
     }
 
+    // parameter로 객체 하나를 받고, Object[] param을 만들 때 this.variable을 사용하는 편이 낫나?
+    public void hireEmployee(String fName, String mInit, String lName, String ssn, String bDate,
+                               String address, String sex, String salary, String superSsn, String dNo) {
+        String query = "insert Employee values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        Object[] param = new Object[]{fName, mInit, lName, ssn, bDate, address, sex, salary, superSsn, dNo};
+        this.jdbcTemplate.update(query, param);
+    }
+
+//    public void fireEmployee(String ssn) {
+//        String query = "delete from Employee where ssn = ?";
+//        String param = ssn;
+//        this.jdbcTemplate.update(query, param);
+//    }
+
+    // employee 추가/삭제 만들었고, 정보 변경 만들어야 함!
+
+
+
 }
