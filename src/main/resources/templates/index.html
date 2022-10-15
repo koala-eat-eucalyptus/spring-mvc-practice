@@ -16,6 +16,7 @@
 <body>
   <h1 style="text-align: left">직원검색시스템</h1>
   <div>
+    <h3>직원 검색 목록</h3>
     <table class="table table-hover table-bordered">
       <thead>
       <tr style="text-align: center">
@@ -32,17 +33,17 @@
       </tr>
       </thead>
       <tbody>
-      <tr th:each="emp: ${list}">
-        <td th:text="${emp.fName}">Fname</td>
-        <td th:text="${emp.mInit}">Minit</td>
-        <td th:text="${emp.lName}">Lname</td>
+      <tr th:each="emp: ${employeeList}">
+        <td th:text="${emp.fname}">Fname</td>
+        <td th:text="${emp.minit}">Minit</td>
+        <td th:text="${emp.lname}">Lname</td>
         <td th:text="${emp.ssn}">Ssn</td>
-        <td th:text="${emp.bDate}">Bdate</td>
+        <td th:text="${emp.bdate}">Bdate</td>
         <td th:text="${emp.address}">Address</td>
         <td th:text="${emp.sex}">Sex</td>
         <td th:text="${emp.salary}">Salary</td>
         <td th:text="${emp.superSsn}">Super_ssn</td>
-        <td th:text="${emp.dNo}">Dno</td>
+        <td th:text="${emp.dno}">Dno</td>
       </tr>
       </tbody>
     </table>
@@ -50,7 +51,7 @@
   <br/>
   <br/>
   <div>
-    <form th:action="hire" method="post">
+    <form th:action="hire" method="post" th:object="${employee}">
       <table class="table table-hover table-bordered" style="width: 800px;">
         <thead>
         <tr>
@@ -68,16 +69,16 @@
         </thead>
         <tbody>
         <tr>
-          <td><input id="Fname" style="width: 80px"/></td>
-          <td><input id="Minit" style="width: 50px"/></td>
-          <td><input id="Lname" style="width: 80px"/></td>
-          <td><input id="Ssn" style="width: 80px"/></td>
-          <td><input id="Bdate" style="width: 80px"/></td>
-          <td><input id="Address" style="width: 200px"/></td>
-          <td><input id="Sex" style="width: 50px"/></td>
-          <td><input id="Salary" style="width: 100px"/></td>
-          <td><input id="Super_Ssn" style="width: 80px"/></td>
-          <td><input id="Dno" style="width: 50px"/></td>
+          <td><input id="Fname" style="width: 80px" th:name="fname" th:value="${fname}"/></td>
+          <td><input id="Minit" style="width: 50px" th:name="minit" th:value="${minit}"/></td>
+          <td><input id="Lname" style="width: 80px" th:name="lname" th:value="${lname}"/></td>
+          <td><input id="Ssn" style="width: 80px" th:name="ssn" th:value="${ssn}"/></td>
+          <td><input id="Bdate" style="width: 80px" th:name="bdate" th:value="${bdate}"/></td>
+          <td><input id="Address" style="width: 200px" th:name="address" th:value="${address}"/></td>
+          <td><input id="Sex" style="width: 50px" th:name="sex" th:value="${sex}"/></td>
+          <td><input id="Salary" style="width: 100px" th:name="salary" th:value="${salary}"/></td>
+          <td><input id="Super_Ssn" style="width: 80px" th:name="superssn" th:value="${superSsn}"/></td>
+          <td><input id="Dno" style="width: 50px" th:name="dno" th:value="${dno}"/></td>
         </tr>
         </tbody>
       </table>
@@ -102,7 +103,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr th:each="emp: ${list2}">
+      <tr th:each="emp: ${dependentList}">
         <td th:text="${emp.eSsn}">eSsn</td>
         <td th:text="${emp.dependentName}">dependentName</td>
         <td th:text="${emp.sex}">sex</td>
