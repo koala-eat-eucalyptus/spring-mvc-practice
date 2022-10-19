@@ -13,14 +13,47 @@
       border: 1px solid #000000;
     }
   </style>
-
+  <script>
+    function searchNoneClick() {
+      event.preventDefault();
+      window.location.replace("/");
+      $('#dnoDiv').hide();
+      $('#salaryDiv').hide();
+    }
+    function salaryClick() {
+      event.preventDefault();
+      $('#dnoDiv').hide();
+      $('#salaryDiv').show();
+    }
+    function departmentNumberClick() {
+      event.preventDefault();
+      $('#salaryDiv').hide();
+      $('#dnoDiv').show();
+    }
+  </script>
 </head>
 <body>
   <h1 style="text-align: left">직원검색시스템</h1>
   <div>
     <h3>검색 설정</h3>
     <div>
-
+      <button class="btn btn-danger" onclick="searchNoneClick()">전체</button>
+      <button class="btn btn-primary" onclick="salaryClick()">연봉</button>
+      <button class="btn btn-success" onclick="departmentNumberClick()">부서 번호</button>
+      <div id="salaryDiv" style="display: none; margin-top: 10px;">
+        <form th:action="@{/search/salary}" method="post">
+          검색할 최소 연봉
+          <input type="text" th:name="salary" th:value="${salary}"/>
+          <button type="submit">확인</button>
+        </form>
+      </div>
+      <div id="dnoDiv" style="display: none; margin-top: 10px;">
+        <form th:action="@{/search/department}" method="post">
+          검색할 부서 번호
+          <input type="text" th:name="department" th:value="${department}"/>
+          <button type="submit">확인</button>
+        </form>
+      </div>
     </div>
   </div>
   <div>
