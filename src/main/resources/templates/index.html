@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>데이터베이스 - 직원정보시스템</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
   <style>
     * {
       text-align: center;
@@ -12,41 +13,53 @@
       border: 1px solid #000000;
     }
   </style>
+
 </head>
 <body>
   <h1 style="text-align: left">직원검색시스템</h1>
   <div>
-    <h3>직원 검색 목록</h3>
-    <table class="table table-hover table-bordered">
-      <thead>
-      <tr style="text-align: center">
-        <th>Fname</th>
-        <th>Minit</th>
-        <th>Lname</th>
-        <th>Ssn</th>
-        <th>Bdate</th>
-        <th>Address</th>
-        <th>Sex</th>
-        <th>Salary</th>
-        <th>Super_ssn</th>
-        <th>Dno</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each="emp: ${employeeList}">
-        <td th:text="${emp.fname}">Fname</td>
-        <td th:text="${emp.minit}">Minit</td>
-        <td th:text="${emp.lname}">Lname</td>
-        <td th:text="${emp.ssn}">Ssn</td>
-        <td th:text="${emp.bdate}">Bdate</td>
-        <td th:text="${emp.address}">Address</td>
-        <td th:text="${emp.sex}">Sex</td>
-        <td th:text="${emp.salary}">Salary</td>
-        <td th:text="${emp.superSsn}">Super_ssn</td>
-        <td th:text="${emp.dno}">Dno</td>
-      </tr>
-      </tbody>
-    </table>
+    <h3>검색 설정</h3>
+    <div>
+
+    </div>
+  </div>
+  <div>
+    <h3>직원 검색 결과</h3>
+    <form th:action="fire" method="post" th:object="${employee}">
+      <table class="table table-hover table-bordered">
+        <thead>
+        <tr style="text-align: center">
+          <th> </th>
+          <th>Fname</th>
+          <th>Minit</th>
+          <th>Lname</th>
+          <th>Ssn</th>
+          <th>Bdate</th>
+          <th>Address</th>
+          <th>Sex</th>
+          <th>Salary</th>
+          <th>Super_ssn</th>
+          <th>Dno</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="emp: ${employeeList}">
+          <td style="width: 50px"><input type="checkbox" th:name="ssn" th:value="${emp.ssn}" /></td>
+          <td th:text="${emp.fname}">Fname</td>
+          <td th:text="${emp.minit}">Minit</td>
+          <td th:text="${emp.lname}">Lname</td>
+          <td th:text="${emp.ssn}">Ssn</td>
+          <td th:text="${emp.bdate}">Bdate</td>
+          <td th:text="${emp.address}">Address</td>
+          <td th:text="${emp.sex}">Sex</td>
+          <td th:text="${emp.salary}">Salary</td>
+          <td th:text="${emp.superSsn}">Super_ssn</td>
+          <td th:text="${emp.dno}">Dno</td>
+        </tr>
+        </tbody>
+      </table>
+      <button type="submit" style="float: left" class="btn btn-info">삭제</button>
+    </form>
   </div>
   <br/>
   <br/>
