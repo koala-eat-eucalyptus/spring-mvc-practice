@@ -60,12 +60,17 @@ public class EmployeeRepository {
         String query = "insert Employee values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         this.jdbcTemplate.update(query, info);
     }
-
+//
 //    public void fireEmployee(String ssn) {
-//        String query = "delete from Employee where ssn = ?";
-//        String param = ssn;
-//        this.jdbcTemplate.update(query, param);
+//        String query = "delete from Employee where = ?";
+//        this.jdbcTemplate.update(query, ssn);
 //    }
+
+    public void fireEmployee(String ssn) {
+        String query = "delete from Employee where ssn = ?";
+        String param = ssn;
+        this.jdbcTemplate.update(query, param);
+    }
 
     // employee 추가/삭제 만들었고, 정보 변경 만들어야 함!
 
