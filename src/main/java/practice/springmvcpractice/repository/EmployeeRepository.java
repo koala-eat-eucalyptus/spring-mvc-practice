@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import practice.springmvcpractice.domain.Employee;
 
 import javax.sql.DataSource;
+import java.util.Collection;
 import java.util.List;
 
 @Repository
@@ -55,11 +56,9 @@ public class EmployeeRepository {
     }
 
     // parameter로 객체 하나를 받고, Object[] param을 만들 때 this.variable을 사용하는 편이 낫나?
-    public void hireEmployee(String fname, String minit, String lname, String ssn, String bdate,
-                               String address, String sex, String salary, String superSsn, String dno) {
+    public void hireEmployee(Object[] info) {
         String query = "insert Employee values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        Object[] param = new Object[]{fname, minit, lname, ssn, bdate, address, sex, salary, superSsn, dno};
-        this.jdbcTemplate.update(query, param);
+        this.jdbcTemplate.update(query, info);
     }
 
 //    public void fireEmployee(String ssn) {
