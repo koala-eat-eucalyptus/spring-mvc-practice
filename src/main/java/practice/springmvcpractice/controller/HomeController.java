@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,13 +28,23 @@ public class HomeController {
         this.dependentRepository = dependentRepository;
     }
 
-
     @RequestMapping("/")
-    public String home(Model model) {
-        model.addAttribute("employeeList", employeeRepository.getAllEmployee());
-//        model.addAttribute("dependentList", dependentRepository.getDependent("333445555", "Joy"));
+    public String home() {
+        return "redirect:/search";
+    }
 
-        return "index";
+    @RequestMapping(value = {"/search", "/search/{option}"})
+    public String search(Model model,
+                         @PathVariable(required = false) String option,
+                         @RequestParam Map<String, Object> searchMap) {
+        if (option == null)
+            model.addAttribute("employeeList", employeeRepository.getAllEmployee("all", null));
+        else if (option.equals("salary"))
+            model.addAttribute("employeeList", employeeRepository.getAllEmployee("salary", searchMap.get("salary")));
+        else if (option.equals("department"))
+            model.addAttribute("employeeList", employeeRepository.getAllEmployee("department", searchMap.get("department")));
+
+        return "search";
     }
 
     @PostMapping("/hire")
