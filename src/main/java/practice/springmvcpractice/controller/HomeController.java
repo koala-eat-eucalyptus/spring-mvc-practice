@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import practice.springmvcpractice.repository.DependentRepository;
 import practice.springmvcpractice.repository.EmployeeRepository;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 @Controller
@@ -34,12 +35,7 @@ public class HomeController {
 
     @PostMapping("/hire")
     public String hire(@RequestParam Map<String, Object> employeeMap) {
-        for(String key: employeeMap.keySet()) {
-            System.out.println(key);
-        }
-//        System.out.println(employeeMap.get("fname"));
-//        employeeRepository.hireEmployee("Pom", "E", "Pom", "135791357",
-//                "2016-01-01", "dorm", "M", "12345",  "333445555", "5");
+        employeeRepository.hireEmployee(employeeMap.values().toArray());
         return "redirect:/";
     }
 }
