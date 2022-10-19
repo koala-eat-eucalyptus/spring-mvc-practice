@@ -37,8 +37,13 @@ public class EmployeeRepository {
                         ), param);
     }
 
-    public List<Employee> getAllEmployee() {
+    public List<Employee> getAllEmployee(String a, String b) {
         String query = "select * from Employee";
+        if (a.equals("salary")) {
+            query += " where salary >= " + b;
+        } else if (a.equals("department")) {
+            query += " where dno = " + b;
+        }
         return this.jdbcTemplate.query(query,
                 (rs, rowNum) -> new Employee(
                         rs.getString("Fname"),
